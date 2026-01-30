@@ -3,6 +3,26 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 
+const roomImages = [
+  "/assets/img-2.png",
+  "/assets/img-3.png",
+  "/assets/img-4.png",
+  "/assets/img-5.png",
+];
+
+const galleryImages = [
+  "/assets/img-1.png",
+  "/assets/img-2.png",
+  "/assets/img-3.png",
+  "/assets/img-4.png",
+  "/assets/img-5.png",
+  "/assets/img-6.png",
+  "/assets/img-7.png",
+  "/assets/img-8.png",
+  "/assets/img-9.png",
+  "/assets/img-10.png",
+];
+
 const content = {
   en: {
     nav: {
@@ -134,6 +154,7 @@ const content = {
 
 export default function Home() {
   const [lang, setLang] = useState<"en" | "am">("en");
+  const [mobileOpen, setMobileOpen] = useState(false);
   const t = useMemo(() => content[lang], [lang]);
   const isAm = lang === "am";
 
@@ -190,6 +211,40 @@ export default function Home() {
                 {t.nav.contact}
               </a>
             </nav>
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white p-2 text-slate-700 shadow-sm md:hidden"
+              aria-label="Toggle navigation"
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((prev) => !prev)}
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 6H21"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M3 12H21"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M3 18H21"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
             <div className="flex items-center rounded-full border border-black/10 bg-white p-1 text-sm shadow-sm">
               <button
                 type="button"
@@ -218,6 +273,54 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {mobileOpen && (
+          <div className="border-t border-black/5 bg-white md:hidden">
+            <nav className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 text-sm text-slate-700">
+              <a
+                className="rounded-lg px-3 py-2 hover:bg-[color:var(--background)]"
+                href="#home"
+                onClick={() => setMobileOpen(false)}
+              >
+                {t.nav.home}
+              </a>
+              <a
+                className="rounded-lg px-3 py-2 hover:bg-[color:var(--background)]"
+                href="#about"
+                onClick={() => setMobileOpen(false)}
+              >
+                {t.nav.about}
+              </a>
+              <a
+                className="rounded-lg px-3 py-2 hover:bg-[color:var(--background)]"
+                href="#rooms"
+                onClick={() => setMobileOpen(false)}
+              >
+                {t.nav.rooms}
+              </a>
+              <a
+                className="rounded-lg px-3 py-2 hover:bg-[color:var(--background)]"
+                href="#location"
+                onClick={() => setMobileOpen(false)}
+              >
+                {t.nav.location}
+              </a>
+              <a
+                className="rounded-lg px-3 py-2 hover:bg-[color:var(--background)]"
+                href="#contact"
+                onClick={() => setMobileOpen(false)}
+              >
+                {t.nav.contact}
+              </a>
+              <a
+                className="rounded-lg px-3 py-2 hover:bg-[color:var(--background)]"
+                href="/gallery"
+                onClick={() => setMobileOpen(false)}
+              >
+                {isAm ? "ጋለሪ" : "Gallery"}
+              </a>
+            </nav>
+          </div>
+        )}
       </header>
 
       <main>
@@ -273,10 +376,10 @@ export default function Home() {
               <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[color:var(--accent)]/15 blur-2xl" />
               <div className="rounded-3xl border border-black/5 bg-white p-3 shadow-lg">
                 <Image
-                  src="/hero-joy.svg"
-                  alt="Joy Pension exterior and welcoming lobby illustration"
-                  width={720}
-                  height={520}
+                  src="/assets/img-1.png"
+                  alt="Joy Pension exterior and welcoming lobby"
+                  width={900}
+                  height={680}
                   priority
                   className="h-auto w-full rounded-2xl"
                 />
@@ -344,11 +447,20 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-10 grid gap-6 md:grid-cols-2">
-              {t.roomTypes.map((room) => (
+              {t.roomTypes.map((room, index) => (
                 <div
                   key={room.title}
                   className="rounded-2xl border border-black/5 bg-white p-6 shadow-sm"
                 >
+                  <div className="relative mb-4 h-44 w-full overflow-hidden rounded-xl">
+                    <Image
+                      src={roomImages[index % roomImages.length]}
+                      alt={`${room.title} at Joy Pension`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                   <h3 className="text-lg font-semibold text-slate-900">
                     {room.title}
                   </h3>
@@ -386,6 +498,50 @@ export default function Home() {
                   </span>
                 </div>
               ))}
+            </div>
+            <div className="mt-14 rounded-3xl border border-black/5 bg-white p-8 shadow-sm">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    {isAm ? "የቦታው ፎቶዎች" : "Photo Gallery"}
+                  </h3>
+                  <p className="mt-2 text-sm text-[color:var(--muted)]">
+                    {isAm
+                      ? "የክፍሎችን እና የአካባቢውን እይታ ይመልከቱ።"
+                      : "Explore our rooms and surroundings."}
+                  </p>
+                </div>
+                <div className="rounded-full bg-[color:var(--background)] px-4 py-2 text-xs font-medium text-[color:var(--muted)]">
+                  {isAm ? "10 ፎቶዎች" : "10 photos"}
+                </div>
+              </div>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {galleryImages.slice(0, 3).map((src, index) => (
+                  <div
+                    key={src}
+                    className="overflow-hidden rounded-2xl border border-black/5 bg-[color:var(--background)] shadow-sm"
+                  >
+                    <div className="relative w-full overflow-hidden">
+                      <Image
+                        src={src}
+                        alt={`Joy Pension photo ${index + 1}`}
+                        width={900}
+                        height={700}
+                        className="h-auto w-full object-cover transition duration-500 hover:scale-105"
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6">
+                <a
+                  href="/gallery"
+                  className="inline-flex items-center justify-center rounded-full border border-[color:var(--accent)] px-5 py-2 text-sm font-semibold text-[color:var(--accent-dark)] transition hover:bg-[color:var(--accent)] hover:text-white"
+                >
+                  {isAm ? "ሁሉንም ይመልከቱ" : "See more"}
+                </a>
+              </div>
             </div>
           </div>
         </section>
