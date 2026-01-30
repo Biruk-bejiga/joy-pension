@@ -1,0 +1,33 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7E6D6"/>
+      <stop offset="1" stop-color="#E9C8A8"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FDF5EC"/>
+      <stop offset="1" stop-color="#F7E6D6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="40" fill="url(#sky)"/>
+  <rect x="100" y="180" width="1000" height="460" rx="32" fill="url(#warm)"/>
+  <rect x="190" y="250" width="260" height="330" rx="20" fill="#FFF8F1"/>
+  <rect x="500" y="250" width="260" height="330" rx="20" fill="#FFF3E6"/>
+  <rect x="810" y="250" width="200" height="330" rx="20" fill="#FFF8F1"/>
+  <rect x="250" y="300" width="60" height="70" rx="12" fill="#E9C8A8"/>
+  <rect x="340" y="300" width="60" height="70" rx="12" fill="#E9C8A8"/>
+  <rect x="250" y="410" width="60" height="70" rx="12" fill="#E9C8A8"/>
+  <rect x="340" y="410" width="60" height="70" rx="12" fill="#E9C8A8"/>
+  <rect x="560" y="300" width="60" height="70" rx="12" fill="#E1B28B"/>
+  <rect x="650" y="300" width="60" height="70" rx="12" fill="#E1B28B"/>
+  <rect x="560" y="410" width="60" height="70" rx="12" fill="#E1B28B"/>
+  <rect x="650" y="410" width="60" height="70" rx="12" fill="#E1B28B"/>
+  <rect x="860" y="300" width="60" height="70" rx="12" fill="#E9C8A8"/>
+  <rect x="860" y="410" width="60" height="70" rx="12" fill="#E9C8A8"/>
+  <rect x="520" y="560" width="160" height="80" rx="16" fill="#C97B4A"/>
+  <circle cx="150" cy="140" r="50" fill="#F2D4B7"/>
+  <circle cx="220" cy="120" r="26" fill="#F0CBA7"/>
+  <circle cx="1030" cy="140" r="40" fill="#F2D4B7"/>
+  <path d="M80 650 C180 620 260 620 360 650 C460 680 540 690 640 660 C760 620 860 620 980 650 C1060 675 1120 690 1160 700" stroke="#E4B995" stroke-width="18" stroke-linecap="round"/>
+  <text x="520" y="610" font-family="Arial, sans-serif" font-size="24" fill="#FFF8F1">Joy Pension</text>
+</svg>
